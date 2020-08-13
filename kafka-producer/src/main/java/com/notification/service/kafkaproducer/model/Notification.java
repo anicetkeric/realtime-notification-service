@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.time.LocalDateTime;
 
  @Data
  @ToString
@@ -14,5 +13,5 @@ import java.time.LocalDateTime;
 public class Notification {
     private Long id;
     private String content;
-    private LocalDateTime date;
+     private String type;
 }
