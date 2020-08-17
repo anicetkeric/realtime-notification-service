@@ -17,13 +17,11 @@ import java.util.Map;
 @Configuration
 public class KafkaProducerConfiguration {
 
-
     private final Environment env;
 
     public KafkaProducerConfiguration(Environment env) {
         this.env = env;
     }
-
 
     @Bean
     public Map<String, Object> producerConfigs() {

@@ -20,14 +20,11 @@ public class BrokerProducerService {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-
     public void sendMessage(String topic, String message) {
-        // the KafkaTemplate provides asynchronous send methods returning a
-        // Future
+        // the KafkaTemplate provides asynchronous send methods returning a Future
         ListenableFuture<SendResult<Integer, String>> future = kafkaTemplate.send(topic, message);
 
-        // you can register a callback with the listener to receive the result
-        // of the send asynchronously
+        // you can register a callback with the listener to receive the result of the send asynchronously
         future.addCallback(new ListenableFutureCallback<SendResult<Integer, String>>() {
 
             @Override
@@ -40,6 +37,4 @@ public class BrokerProducerService {
             }
         });
     }
-
-
 }
