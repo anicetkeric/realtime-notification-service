@@ -13,5 +13,5 @@ import lombok.ToString;
 public class Notification {
     private Long id;
     private String content;
-     private String type;
+     private NotificationType type;
 }

@@ -16,7 +16,6 @@ const icon = new Map([
 export class AppComponent implements OnInit {
 
   title = 'Web push Notifications!';
-  listNotif = [];
   counter: number;
 
   constructor(private pushNotifications: PushNotificationsService,
@@ -36,7 +35,6 @@ export class AppComponent implements OnInit {
     this.notificationService.notificationMessage.subscribe((data) => {
       console.log('receive message', data);
       this.notify(data);
-      this.listNotif.push(data);
     });
   }
 
@@ -46,10 +44,10 @@ export class AppComponent implements OnInit {
 
 
   notify(message: AppNotification): void {
-    this.counter = this.listNotif.length;
+    this.counter++;
     const options = {
       body: message.content,
-      icon: icon.get(message.type)
+      icon: icon.get(message.type.toLowerCase())
     };
     this.pushNotifications.create('New Alert', options).subscribe(
       res => console.log(res),
