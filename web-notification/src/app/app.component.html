@@ -179,7 +179,22 @@
     z-index: -10;
     width: 1920px;
   }
-
+  .badge {
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.badge-dark {
+    color: #fff;
+    background-color: #343a40;
+}
 
   /* Responsive Styles */
   @media screen and (max-width: 767px) {
@@ -226,8 +241,7 @@
 <div class="content" role="main">
 
   <!-- Highlight Card -->
-<!--   <div class="card highlight-card card-small" (click)="notify()">
- -->    <div class="card highlight-card card-small">
+  <div class="card highlight-card card-small">
 
     <svg id="rocket" alt="Rocket Ship" xmlns="http://www.w3.org/2000/svg" width="101.678" height="101.678" viewBox="0 0 101.678 101.678">
       <g id="Group_83" data-name="Group 83" transform="translate(-141 -696)">
@@ -240,8 +254,8 @@
     </svg>
 
    
-    <span>Click to Show Notiication</span>
-
+    <span>Click to Show Notiication <span class="badge badge-pill badge-dark">{{counter}}</span></span>
+ 
     <svg id="rocket-smoke" alt="Rocket Ship Smoke" xmlns="http://www.w3.org/2000/svg" width="516.119" height="1083.632" viewBox="0 0 516.119 1083.632">
       <path id="Path_40" data-name="Path 40" d="M644.6,141S143.02,215.537,147.049,870.207s342.774,201.755,342.774,201.755S404.659,847.213,388.815,762.2c-27.116-145.51-11.551-384.124,271.9-609.1C671.15,139.365,644.6,141,644.6,141Z" transform="translate(-147.025 -140.939)" fill="#f5f5f5"/>
     </svg>
