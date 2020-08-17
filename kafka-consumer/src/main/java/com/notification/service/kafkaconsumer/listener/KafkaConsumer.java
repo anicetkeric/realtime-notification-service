@@ -4,7 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.notification.service.kafkaconsumer.exception.MapperException;
 import com.notification.service.kafkaconsumer.model.Notification;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Component;
 
 @Slf4j
@@ -12,12 +14,15 @@ import org.springframework.stereotype.Component;
 public class KafkaConsumer {
 
     private static final ObjectMapper mapper = new ObjectMapper();
+    @Autowired
+    SimpMessagingTemplate template;
 
     @KafkaListener(topics = "notification", groupId = "notification-group-id", containerFactory = "kakfaListenerContainerFactory")
     public void listenSenderEmail(String data) {
 
-        Notification dataConsumer = fromJson(data, Notification.class);
+        Notification notification = fromJson(data, Notification.class);
         log.info("Consumed message: " + data);
+        template.convertAndSend("/topic/notif", notification);
 
     }
 
