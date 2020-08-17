@@ -6,6 +6,13 @@ spring:
     listener:
       missing-topics-fatal: false
 
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
 producer:
   kafka:
     topic-name: notification
